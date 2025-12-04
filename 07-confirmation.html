@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géonimaux - Confirmation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F5F5F5;
+            color: #333;
+        }
+
+        .page-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #FFFFFF;
+            border-bottom: 2px solid #333333;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            color: #333333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #FF9800;
+            color: white;
+            border-color: #FF9800;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #666666;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        /* Order Info Box */
+        .order-info {
+            background: #F9F9F9;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px auto;
+            max-width: 500px;
+        }
+
+        .order-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        .order-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+            margin-right: 15px;
+        }
+
+        .btn-primary:hover {
+            background: #45A049;
+        }
+
+        .btn-secondary {
+            background: #FF9800;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #F57C00;
+        }
+
+        .button-group {
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #4CAF50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .footer-copyright {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">🦊 GÉONIMAUX</div>
+            <ul class="nav-menu">
+                <li><a href="01-accueil.html" class="nav-link">Accueil</a></li>
+                <li><a href="02-decouvrir.html" class="nav-link">Découvrir</a></li>
+                <li><a href="03-activites.html" class="nav-link">Activités</a></li>
+                <li><a href="04-boutique.html" class="nav-link">Boutique</a></li>
+                <li><a href="08-compte.html" class="nav-link">Mon Compte</a></li>
+                <li><a href="09-apropos.html" class="nav-link">À propos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="success-icon">✓</div>
+            <h2 class="section-title">Commande confirmée !</h2>
+            <p class="section-description">
+                Merci pour votre achat. Vous allez recevoir un email de confirmation 
+                à l'adresse indiquée.
+            </p>
+
+            <div class="order-info">
+                <h3>Numéro de commande</h3>
+                <p class="order-number">GEO-2024-001234</p>
+            </div>
+
+            <div class="button-group">
+                <a href="08-compte.html" class="btn btn-primary">Voir mes commandes</a>
+                <a href="01-accueil.html" class="btn btn-secondary">Retour à l'accueil</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>🦊 GÉONIMAUX</h3>
+            <p>« Découvrez, explorez, préservez »</p>
+            <div class="footer-links">
+                <a href="09-apropos.html" class="footer-link">À propos</a>
+                <a href="10-contact.html" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Mentions légales</a>
+                <a href="#" class="footer-link">Politique de confidentialité</a>
+            </div>
+            <p class="footer-copyright">© 2024 Géonimaux - Tous droits réservés</p>
+        </footer>
+    </div>
+</body>
+</html>

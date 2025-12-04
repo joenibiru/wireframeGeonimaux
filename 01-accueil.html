@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géonimaux - Accueil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F5F5F5;
+            color: #333;
+        }
+
+        .page-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #FFFFFF;
+            border-bottom: 2px solid #333333;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            color: #333333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #FF9800;
+            color: white;
+            border-color: #FF9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4CAF50 0%, #45A049 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #DDDDDD;
+            border-radius: 4px;
+            background: white;
+            color: #333333;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 600px;
+            background: #E8E8E8;
+            border: 2px dashed #999999;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .map-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #666666;
+            text-align: center;
+        }
+
+        /* GPS Points */
+        .gps-point {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #FF5722;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gps-point:hover {
+            transform: scale(1.2);
+        }
+
+        .gps-point-1 { top: 30%; left: 40%; }
+        .gps-point-2 { top: 50%; left: 60%; }
+        .gps-point-3 { top: 70%; left: 35%; }
+        .gps-point-4 { top: 45%; left: 75%; }
+
+        /* Popup */
+        .popup {
+            position: absolute;
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 100;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup-1 { top: 25%; left: 45%; }
+        .popup-2 { top: 45%; left: 65%; }
+        .popup-3 { top: 65%; left: 40%; }
+        .popup-4 { top: 40%; left: 80%; }
+
+        .popup-image {
+            width: 100%;
+            height: 150px;
+            background: #DDDDDD;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999999;
+            font-size: 14px;
+        }
+
+        .popup h3 {
+            font-size: 20px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .popup-names {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .popup-audio {
+            width: 100%;
+            height: 40px;
+            background: #F0F0F0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .popup-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333333;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #FF9800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: #F57C00;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: #4CAF50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .footer-copyright {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">🦊 GÉONIMAUX</div>
+            <ul class="nav-menu">
+                <li><a href="01-accueil.html" class="nav-link active">Accueil</a></li>
+                <li><a href="02-decouvrir.html" class="nav-link">Découvrir</a></li>
+                <li><a href="03-activites.html" class="nav-link">Activités</a></li>
+                <li><a href="04-boutique.html" class="nav-link">Boutique</a></li>
+                <li><a href="08-compte.html" class="nav-link">Mon Compte</a></li>
+                <li><a href="09-apropos.html" class="nav-link">À propos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>GÉONIMAUX</h1>
+            <p>« Découvrez, explorez, préservez »</p>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <h2 class="section-title">Carte Interactive de la Lozère</h2>
+            <p class="section-description">
+                Explorez la faune lozérienne en survolant les points GPS pour découvrir les espèces recensées.
+            </p>
+
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active">Tous</button>
+                <button class="filter-btn">Mammifères</button>
+                <button class="filter-btn">Oiseaux</button>
+                <button class="filter-btn">Reptiles</button>
+                <button class="filter-btn">Amphibiens</button>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <div class="map-label">
+                    🗺️ CARTE INTERACTIVE DE LA LOZÈRE<br>
+                    <small>(Survolez les points GPS)</small>
+                </div>
+
+                <!-- GPS Points -->
+                <div class="gps-point gps-point-1" 
+                     onmouseover="showPopup(1)" 
+                     onmouseout="hidePopup(1)"></div>
+                <div class="gps-point gps-point-2" 
+                     onmouseover="showPopup(2)" 
+                     onmouseout="hidePopup(2)"></div>
+                <div class="gps-point gps-point-3" 
+                     onmouseover="showPopup(3)" 
+                     onmouseout="hidePopup(3)"></div>
+                <div class="gps-point gps-point-4" 
+                     onmouseover="showPopup(4)" 
+                     onmouseout="hidePopup(4)"></div>
+
+                <!-- Popups -->
+                <div class="popup popup-1" id="popup-1">
+                    <div class="popup-image">[Photo Renard]</div>
+                    <h3>Renard roux</h3>
+                    <div class="popup-names">
+                        <strong>Nom scientifique:</strong> Vulpes vulpes<br>
+                        <strong>Nom occitan:</strong> Volpilh
+                    </div>
+                    <div class="popup-audio">🔊 Écouter le cri</div>
+                    <div class="popup-description">
+                        Mammifère carnivore très adaptable, présent dans toute la Lozère. 
+                        Actif principalement au crépuscule.
+                    </div>
+                </div>
+
+                <div class="popup popup-2" id="popup-2">
+                    <div class="popup-image">[Photo Milan royal]</div>
+                    <h3>Milan royal</h3>
+                    <div class="popup-names">
+                        <strong>Nom scientifique:</strong> Milvus milvus<br>
+                        <strong>Nom occitan:</strong> Milana reiala
+                    </div>
+                    <div class="popup-audio">🔊 Écouter le cri</div>
+                    <div class="popup-description">
+                        Rapace au plumage roux caractéristique, queue fourchue. 
+                        Espèce protégée en France.
+                    </div>
+                </div>
+
+                <div class="popup popup-3" id="popup-3">
+                    <div class="popup-image">[Photo Salamandre]</div>
+                    <h3>Salamandre tachetée</h3>
+                    <div class="popup-names">
+                        <strong>Nom scientifique:</strong> Salamandra salamandra<br>
+                        <strong>Nom occitan:</strong> Salamandra tatxada
+                    </div>
+                    <div class="popup-audio">🔊 Écouter le cri</div>
+                    <div class="popup-description">
+                        Amphibien noir à taches jaunes, vivant dans les zones humides et forestières.
+                    </div>
+                </div>
+
+                <div class="popup popup-4" id="popup-4">
+                    <div class="popup-image">[Photo Loup]</div>
+                    <h3>Loup gris</h3>
+                    <div class="popup-names">
+                        <strong>Nom scientifique:</strong> Canis lupus<br>
+                        <strong>Nom occitan:</strong> Lop
+                    </div>
+                    <div class="popup-audio">🔊 Écouter le cri</div>
+                    <div class="popup-description">
+                        Grand carnivore en cours de recolonisation. Espèce protégée, 
+                        présence occasionnelle en Lozère.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Floating Action Button -->
+        <div class="fab">+</div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>🦊 GÉONIMAUX</h3>
+            <p>« Découvrez, explorez, préservez »</p>
+            <div class="footer-links">
+                <a href="09-apropos.html" class="footer-link">À propos</a>
+                <a href="10-contact.html" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Mentions légales</a>
+                <a href="#" class="footer-link">Politique de confidentialité</a>
+            </div>
+            <p class="footer-copyright">© 2024 Géonimaux - Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <script>
+        function showPopup(id) {
+            document.getElementById('popup-' + id).classList.add('active');
+        }
+
+        function hidePopup(id) {
+            document.getElementById('popup-' + id).classList.remove('active');
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

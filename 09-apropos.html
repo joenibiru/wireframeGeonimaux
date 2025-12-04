@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géonimaux - À propos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F5F5F5;
+            color: #333;
+        }
+
+        .page-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #FFFFFF;
+            border-bottom: 2px solid #333333;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            color: #333333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #FF9800;
+            color: white;
+            border-color: #FF9800;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Mission Box */
+        .mission-box {
+            background: #E8F5E9;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .mission-box h3 {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .mission-box p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        /* Info Card */
+        .info-card {
+            border: 2px solid #DDDDDD;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        .info-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333333;
+        }
+
+        .info-card p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #666666;
+        }
+
+        /* Partners Grid */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .partner-card {
+            padding: 20px;
+            background: #F9F9F9;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        /* Footer */
+        .footer {
+            background: #4CAF50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .footer-copyright {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">🦊 GÉONIMAUX</div>
+            <ul class="nav-menu">
+                <li><a href="01-accueil.html" class="nav-link">Accueil</a></li>
+                <li><a href="02-decouvrir.html" class="nav-link">Découvrir</a></li>
+                <li><a href="03-activites.html" class="nav-link">Activités</a></li>
+                <li><a href="04-boutique.html" class="nav-link">Boutique</a></li>
+                <li><a href="08-compte.html" class="nav-link">Mon Compte</a></li>
+                <li><a href="09-apropos.html" class="nav-link active">À propos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <h2 class="section-title">À propos de Géonimaux</h2>
+
+            <div class="content-wrapper">
+                <!-- Mission -->
+                <div class="mission-box">
+                    <h3>Notre Mission</h3>
+                    <p>
+                        Géonimaux est une plateforme dédiée à la découverte et la préservation 
+                        de la faune lozérienne. Notre objectif est de rendre accessible la 
+                        connaissance de la biodiversité locale à travers une cartographie 
+                        interactive, des activités pédagogiques et des formations spécialisées.
+                    </p>
+                </div>
+
+                <!-- Le Projet -->
+                <div class="info-card">
+                    <h3>Le Projet</h3>
+                    <p>
+                        Créé en 2024, Géonimaux recense plus de 150 espèces animales présentes 
+                        en Lozère. Chaque observation est géolocalisée et documentée avec des 
+                        informations scientifiques rigoureuses, enrichies de noms occitans et 
+                        d'enregistrements sonores.
+                    </p>
+                </div>
+
+                <!-- Méthodologie -->
+                <div class="info-card">
+                    <h3>Méthodologie</h3>
+                    <p>
+                        Nos données proviennent de naturalistes professionnels, de partenaires 
+                        institutionnels (Parc National des Cévennes, LPO) et de contributeurs 
+                        citoyens. Chaque observation est vérifiée avant validation pour garantir 
+                        la qualité de l'information.
+                    </p>
+                </div>
+
+                <!-- Nos Partenaires -->
+                <div class="info-card">
+                    <h3>Nos Partenaires</h3>
+                    <div class="partners-grid">
+                        <div class="partner-card">
+                            [Logo]<br>Parc National<br>des Cévennes
+                        </div>
+                        <div class="partner-card">
+                            [Logo]<br>LPO<br>Occitanie
+                        </div>
+                        <div class="partner-card">
+                            [Logo]<br>Département<br>de la Lozère
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valeurs -->
+                <div class="info-card">
+                    <h3>Nos Valeurs</h3>
+                    <p>
+                        <strong>Découverte</strong> - Rendre la faune accessible à tous<br><br>
+                        <strong>Exploration</strong> - Encourager les sorties nature<br><br>
+                        <strong>Préservation</strong> - Sensibiliser à la protection de la biodiversité
+                    </p>
+                </div>
+
+                <!-- L'équipe -->
+                <div class="info-card">
+                    <h3>L'équipe</h3>
+                    <p>
+                        Géonimaux est porté par une équipe de naturalistes passionnés, 
+                        d'éducateurs à l'environnement et de développeurs web. Nous travaillons 
+                        en collaboration avec les acteurs locaux pour promouvoir la connaissance 
+                        et la préservation de la faune lozérienne.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>🦊 GÉONIMAUX</h3>
+            <p>« Découvrez, explorez, préservez »</p>
+            <div class="footer-links">
+                <a href="09-apropos.html" class="footer-link">À propos</a>
+                <a href="10-contact.html" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Mentions légales</a>
+                <a href="#" class="footer-link">Politique de confidentialité</a>
+            </div>
+            <p class="footer-copyright">© 2024 Géonimaux - Tous droits réservés</p>
+        </footer>
+    </div>
+</body>
+</html>

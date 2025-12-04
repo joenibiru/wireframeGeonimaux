@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géonimaux - Boutique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F5F5F5;
+            color: #333;
+        }
+
+        .page-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #FFFFFF;
+            border-bottom: 2px solid #333333;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            color: #333333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #FF9800;
+            color: white;
+            border-color: #FF9800;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid #DDDDDD;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            color: #666666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover,
+        .tab.active {
+            color: #4CAF50;
+            border-bottom-color: #4CAF50;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Product Card */
+        .product-card {
+            border: 2px solid #DDDDDD;
+            border-radius: 8px;
+            padding: 20px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            background: #E0E0E0;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999999;
+            font-size: 14px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .card-features {
+            list-style: none;
+            margin: 15px 0;
+            padding-left: 0;
+        }
+
+        .card-features li {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card-features li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .card-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 15px 0;
+        }
+
+        /* Button */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #45A049;
+        }
+
+        /* Cart Preview (Sticky) */
+        .cart-preview {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            z-index: 1000;
+        }
+
+        .cart-preview h4 {
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        .cart-count {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: #4CAF50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .footer-copyright {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">🦊 GÉONIMAUX</div>
+            <ul class="nav-menu">
+                <li><a href="01-accueil.html" class="nav-link">Accueil</a></li>
+                <li><a href="02-decouvrir.html" class="nav-link">Découvrir</a></li>
+                <li><a href="03-activites.html" class="nav-link">Activités</a></li>
+                <li><a href="04-boutique.html" class="nav-link active">Boutique</a></li>
+                <li><a href="08-compte.html" class="nav-link">Mon Compte</a></li>
+                <li><a href="09-apropos.html" class="nav-link">À propos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <h2 class="section-title">Boutique</h2>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('cartes')">Cartes aux Trésors</button>
+                <button class="tab" onclick="switchTab('interventions')">Interventions Scolaires</button>
+                <button class="tab" onclick="switchTab('formations')">Formations</button>
+            </div>
+
+            <!-- Tab Content: Cartes aux Trésors -->
+            <div id="cartes-tab" class="tab-content active">
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="card-image">[Carte Individuelle]</div>
+                        <h3 class="card-title">Carte Individuelle</h3>
+                        <p class="card-description">
+                            Une carte aux trésors pour vos sorties nature personnelles.
+                        </p>
+                        <ul class="card-features">
+                            <li>15 espèces à découvrir</li>
+                            <li>Zone: Causses ou Gorges</li>
+                            <li>Difficulté: Facile à Moyen</li>
+                            <li>Accès carte numérique</li>
+                        </ul>
+                        <div class="card-price">25€</div>
+                        <button class="btn btn-primary" onclick="addToCart('Carte Individuelle', 25)">Ajouter au panier</button>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="card-image">[Pack Famille]</div>
+                        <h3 class="card-title">Pack Famille</h3>
+                        <p class="card-description">
+                            Parfait pour des sorties en famille (2-6 personnes).
+                        </p>
+                        <ul class="card-features">
+                            <li>25 espèces à découvrir</li>
+                            <li>2 zones au choix</li>
+                            <li>Difficulté: Tous niveaux</li>
+                            <li>Livret pédagogique inclus</li>
+                        </ul>
+                        <div class="card-price">45€</div>
+                        <button class="btn btn-primary" onclick="addToCart('Pack Famille', 45)">Ajouter au panier</button>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="card-image">[Pack Classe]</div>
+                        <h3 class="card-title">Pack Classe</h3>
+                        <p class="card-description">
+                            Pour les enseignants - 30 cartes élèves.
+                        </p>
+                        <ul class="card-features">
+                            <li>30 cartes individuelles</li>
+                            <li>Guide pédagogique enseignant</li>
+                            <li>Fiches d'activités</li>
+                            <li>Support en ligne</li>
+                        </ul>
+                        <div class="card-price">120€</div>
+                        <button class="btn btn-primary" onclick="addToCart('Pack Classe', 120)">Ajouter au panier</button>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="card-image">[Carte Premium]</div>
+                        <h3 class="card-title">Mammifères des Causses</h3>
+                        <p class="card-description">
+                            Carte thématique spécialisée pour naturalistes.
+                        </p>
+                        <ul class="card-features">
+                            <li>20 espèces mammifères</li>
+                            <li>Zone: Causses lozériens</li>
+                            <li>Difficulté: Avancé</li>
+                            <li>Guide d'observation détaillé</li>
+                        </ul>
+                        <div class="card-price">35€</div>
+                        <button class="btn btn-primary" onclick="addToCart('Mammifères des Causses', 35)">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Interventions Scolaires -->
+            <div id="interventions-tab" class="tab-content">
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="card-image">[Demi-journée]</div>
+                        <h3 class="card-title">Intervention Demi-journée</h3>
+                        <p class="card-description">
+                            Animation de 3h en classe ou sur le terrain.
+                        </p>
+                        <ul class="card-features">
+                            <li>Durée: 3 heures</li>
+                            <li>1 animateur professionnel</li>
+                            <li>Matériel pédagogique fourni</li>
+                            <li>Jusqu'à 30 élèves</li>
+                        </ul>
+                        <div class="card-price">150€</div>
+                        <a href="05-panier.html" class="btn btn-primary">Réserver</a>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="card-image">[Journée]</div>
+                        <h3 class="card-title">Intervention Journée Complète</h3>
+                        <p class="card-description">
+                            Animation de 6h avec sortie terrain incluse.
+                        </p>
+                        <ul class="card-features">
+                            <li>Durée: 6 heures</li>
+                            <li>1 animateur professionnel</li>
+                            <li>Sortie terrain encadrée</li>
+                            <li>Kit observation fourni</li>
+                        </ul>
+                        <div class="card-price">280€</div>
+                        <a href="05-panier.html" class="btn btn-primary">Réserver</a>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="card-image">[Programme]</div>
+                        <h3 class="card-title">Programme Annuel</h3>
+                        <p class="card-description">
+                            5 interventions réparties sur l'année scolaire.
+                        </p>
+                        <ul class="card-features">
+                            <li>5 journées d'animation</li>
+                            <li>Thématiques variées</li>
+                            <li>Suivi pédagogique</li>
+                            <li>Tarif préférentiel</li>
+                        </ul>
+                        <div class="card-price">1200€</div>
+                        <a href="05-panier.html" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Formations -->
+            <div id="formations-tab" class="tab-content">
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="card-image">[Initiation]</div>
+                        <h3 class="card-title">Formation Initiation</h3>
+                        <p class="card-description">
+                            Découvrez les bases de l'animation nature.
+                        </p>
+                        <ul class="card-features">
+                            <li>Durée: 2 jours (14h)</li>
+                            <li>Groupe: 6-12 personnes</li>
+                            <li>Certificat de participation</li>
+                            <li>Support pédagogique fourni</li>
+                        </ul>
+                        <div class="card-price">250€/pers</div>
+                        <a href="05-panier.html" class="btn btn-primary">S'inscrire</a>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="card-image">[Perfectionnement]</div>
+                        <h3 class="card-title">Formation Perfectionnement</h3>
+                        <p class="card-description">
+                            Approfondissez vos compétences d'animateur.
+                        </p>
+                        <ul class="card-features">
+                            <li>Durée: 3 jours (21h)</li>
+                            <li>Groupe: 6-10 personnes</li>
+                            <li>Certification professionnelle</li>
+                            <li>Sorties terrain incluses</li>
+                        </ul>
+                        <div class="card-price">380€/pers</div>
+                        <a href="05-panier.html" class="btn btn-primary">S'inscrire</a>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="card-image">[Spécialisation]</div>
+                        <h3 class="card-title">Formation Spécialisation</h3>
+                        <p class="card-description">
+                            Expertise sur une thématique spécifique.
+                        </p>
+                        <ul class="card-features">
+                            <li>Durée: 2 jours (14h)</li>
+                            <li>Thèmes: Mammifères, Oiseaux, Reptiles</li>
+                            <li>Groupe: 4-8 personnes</li>
+                            <li>Certification spécialisée</li>
+                        </ul>
+                        <div class="card-price">320€/pers</div>
+                        <a href="05-panier.html" class="btn btn-primary">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Preview -->
+        <div class="cart-preview">
+            <h4>Panier (<span class="cart-count" id="cart-count">0</span>)</h4>
+            <a href="05-panier.html" class="btn btn-primary">Voir le panier</a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>🦊 GÉONIMAUX</h3>
+            <p>« Découvrez, explorez, préservez »</p>
+            <div class="footer-links">
+                <a href="09-apropos.html" class="footer-link">À propos</a>
+                <a href="10-contact.html" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Mentions légales</a>
+                <a href="#" class="footer-link">Politique de confidentialité</a>
+            </div>
+            <p class="footer-copyright">© 2024 Géonimaux - Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <script>
+        let cartCount = 0;
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function addToCart(productName, price) {
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
+            alert('✓ ' + productName + ' ajouté au panier !');
+        }
+    </script>
+</body>
+</html>
