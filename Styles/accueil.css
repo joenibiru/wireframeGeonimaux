@@ -1,0 +1,291 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F5F5F5;
+            color: #333;
+        }
+
+        .page-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #FFFFFF;
+            border-bottom: 2px solid #333333;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            color: #333333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #FF9800;
+            color: white;
+            border-color: #FF9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4CAF50 0%, #45A049 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #DDDDDD;
+            border-radius: 4px;
+            background: white;
+            color: #333333;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 600px;
+            background: #E8E8E8;
+            border: 2px dashed #999999;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .map-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #666666;
+            text-align: center;
+        }
+
+        /* GPS Points */
+        .gps-point {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #FF5722;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gps-point:hover {
+            transform: scale(1.2);
+        }
+
+        .gps-point-1 { top: 30%; left: 40%; }
+        .gps-point-2 { top: 50%; left: 60%; }
+        .gps-point-3 { top: 70%; left: 35%; }
+        .gps-point-4 { top: 45%; left: 75%; }
+
+        /* Popup */
+        .popup {
+            position: absolute;
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 100;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup-1 { top: 25%; left: 45%; }
+        .popup-2 { top: 45%; left: 65%; }
+        .popup-3 { top: 65%; left: 40%; }
+        .popup-4 { top: 40%; left: 80%; }
+
+        .popup-image {
+            width: 100%;
+            height: 150px;
+            background: #DDDDDD;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999999;
+            font-size: 14px;
+        }
+
+        .popup h3 {
+            font-size: 20px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .popup-names {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .popup-audio {
+            width: 100%;
+            height: 40px;
+            background: #F0F0F0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .popup-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333333;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #FF9800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            background: #F57C00;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: #4CAF50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .footer-copyright {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    

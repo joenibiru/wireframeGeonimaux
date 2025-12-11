@@ -3,351 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Styles/compte.css">
     <title>Géonimaux - Mon Compte</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #F5F5F5;
-            color: #333;
-        }
-
-        .page-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100vh;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: #FFFFFF;
-            border-bottom: 2px solid #333333;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #4CAF50;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-link {
-            padding: 10px 20px;
-            border: 1px solid #DDDDDD;
-            border-radius: 4px;
-            color: #333333;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: #FF9800;
-            color: white;
-            border-color: #FF9800;
-        }
-
-        /* Content Section */
-        .content-section {
-            padding: 40px;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            color: #333333;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            border-bottom: 2px solid #DDDDDD;
-            margin-bottom: 30px;
-        }
-
-        .tab {
-            padding: 12px 24px;
-            background: transparent;
-            border: none;
-            border-bottom: 3px solid transparent;
-            font-size: 16px;
-            color: #666666;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab:hover,
-        .tab.active {
-            color: #4CAF50;
-            border-bottom-color: #4CAF50;
-        }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Account Card */
-        .account-card {
-            border: 2px solid #DDDDDD;
-            padding: 30px;
-            border-radius: 8px;
-            background: white;
-            margin-bottom: 20px;
-        }
-
-        .account-card h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333333;
-        }
-
-        /* Form */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #333333;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #DDDDDD;
-            border-radius: 4px;
-            font-size: 16px;
-            color: #333333;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #4CAF50;
-        }
-
-        /* Observation Item */
-        .observation-item {
-            border-left: 4px solid #4CAF50;
-            padding: 15px;
-            background: #F9F9F9;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-
-        .observation-item h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #333333;
-        }
-
-        .observation-item p {
-            font-size: 14px;
-            color: #666666;
-            margin-bottom: 5px;
-        }
-
-        .status-validated {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        .status-pending {
-            color: #FF9800;
-            font-weight: bold;
-        }
-
-        /* Cart Item (for orders) */
-        .cart-item {
-            border: 2px solid #DDDDDD;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .item-info h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #333333;
-        }
-
-        .item-info p {
-            font-size: 14px;
-            color: #666666;
-        }
-
-        .item-right {
-            text-align: right;
-        }
-
-        .item-price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #4CAF50;
-        }
-
-        .item-status {
-            font-size: 14px;
-            color: #4CAF50;
-            margin-top: 5px;
-        }
-
-        /* Species Grid */
-        .species-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .species-card {
-            border: 2px solid #DDDDDD;
-            border-radius: 8px;
-            padding: 20px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        .species-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 150px;
-            background: #E0E0E0;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999999;
-            font-size: 14px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333333;
-            margin-bottom: 10px;
-        }
-
-        .card-description {
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.6;
-        }
-
-        /* Button */
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #45A049;
-        }
-
-        .btn-secondary {
-            background: #FF9800;
-            color: white;
-            width: 100%;
-        }
-
-        .btn-secondary:hover {
-            background: #F57C00;
-        }
-
-        /* Footer */
-        .footer {
-            background: #4CAF50;
-            color: white;
-            padding: 40px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .footer h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .footer p {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .footer-link {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .footer-copyright {
-            margin-top: 30px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-    </style>
 </head>
 <body>
     <div class="page-container">
         <!-- Navigation -->
         <nav class="navbar">
-            <div class="logo">🦊 GÉONIMAUX</div>
+            <div class="logo">GÉONIMAUX</div>
             <ul class="nav-menu">
-                <li><a href="01-accueil.html" class="nav-link">Accueil</a></li>
+                <li><a href="01-accueil.html" class="nav-link active">Accueil</a></li>
                 <li><a href="02-decouvrir.html" class="nav-link">Découvrir</a></li>
                 <li><a href="03-activites.html" class="nav-link">Activités</a></li>
                 <li><a href="04-boutique.html" class="nav-link">Boutique</a></li>
-                <li><a href="08-compte.html" class="nav-link active">Mon Compte</a></li>
+                <li><a href="08-compte.html" class="nav-link">Mon Compte</a></li>
                 <li><a href="09-apropos.html" class="nav-link">À propos</a></li>
+                <li><a href="11-mentions-legales.html" class="nav-link">Mentions légales</a></li>
             </ul>
         </nav>
 
@@ -483,32 +154,19 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <h3>🦊 GÉONIMAUX</h3>
+            <h3>GÉONIMAUX</h3>
             <p>« Découvrez, explorez, préservez »</p>
             <div class="footer-links">
                 <a href="09-apropos.html" class="footer-link">À propos</a>
                 <a href="10-contact.html" class="footer-link">Contact</a>
-                <a href="#" class="footer-link">Mentions légales</a>
-                <a href="#" class="footer-link">Politique de confidentialité</a>
+                <a href="11-mentions-legales.html" class="footer-link">Mentions légales</a>
+                <a href="12-confidentialite.html" class="footer-link">Politique de confidentialité</a>
+                <a href="13-cgv.html" class="footer-link">Conditions Générales de Vente (CGV)</a>
             </div>
             <p class="footer-copyright">© 2024 Géonimaux - Tous droits réservés</p>
         </footer>
     </div>
 
-    <script>
-        function switchTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // Show selected tab
-            document.getElementById(tabName + '-tab').classList.add('active');
-            event.target.classList.add('active');
-        }
-    </script>
+<script src="/Javascripte/compte.js"></script>
 </body>
 </html>
